@@ -1,11 +1,11 @@
 import { ImageGaleryItemImage } from 'components/ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
 
-import { ImageGallery, ImageItem } from './ImageGalleryStyles';
+import { ImageGalleryStyles, ImageItem } from './ImageGalleryStyles';
 
 export const ImageGallery = ({ photos, onSelect }) => {
   return (
-    <ImageGallery>
+    <ImageGalleryStyles>
       {photos.map(({ id, webformatURL, largeImageURL, tags }) => {
         return (
           <ImageItem key={id}>
@@ -19,7 +19,7 @@ export const ImageGallery = ({ photos, onSelect }) => {
           </ImageItem>
         );
       })}
-    </ImageGallery>
+    </ImageGalleryStyles>
   );
 };
 

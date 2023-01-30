@@ -1,12 +1,12 @@
 import { Component } from 'react';
 import { fetchImages } from 'api';
 import toast, { Toaster } from 'react-hot-toast';
-import { ImageGaleryItemImage } from 'components/ImageGalleryItem/ImageGalleryItem';
 import { GlobalStyle } from 'GlobalStyles';
 import { Button } from 'components/Button/Button';
 import { Loader } from 'components/Loader/Loader';
 import { Searchbar } from '../Searchbar/Searchbar';
 import { AppStyles } from './AppStyles';
+import { ImageGallery } from 'components/ImageGallery/ImageGallery';
 
 export class App extends Component {
   state = {
@@ -80,7 +80,7 @@ export class App extends Component {
         <GlobalStyle />
         <Searchbar onSubmit={this.searchPhoto} />
         {photos.length > 0 && (
-          <ImageGaleryItemImage photos={photos} onSelect={this.selectImage} />
+          <ImageGallery photos={photos} onSelect={this.selectImage} />
         )}
         {photos.length > 11 && !isLoading && <Button onClick={this.loadMore} />}
         {isLoading && <Loader />}
