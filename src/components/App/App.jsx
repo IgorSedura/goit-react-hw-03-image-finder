@@ -4,6 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { GlobalStyle } from 'GlobalStyles';
 import { Button } from 'components/Button/Button';
 import { Loader } from 'components/Loader/Loader';
+import { ModalImage } from 'components/Modal/Modal';
 import { Searchbar } from '../Searchbar/Searchbar';
 import { AppStyles } from './AppStyles';
 import { ImageGallery } from 'components/ImageGallery/ImageGallery';
@@ -39,6 +40,9 @@ export class App extends Component {
       }
     } catch (error) {
       toast.error('Oops! Something went wrong! Please try again.');
+      this.setState({
+        isLoading: false,
+      });
     }
   }
 
@@ -73,8 +77,9 @@ export class App extends Component {
       selectedImage: null,
     });
   };
+
   render() {
-    const { photos, isLoading } = this.state;
+    const { photos, isLoading, selectedImage } = this.state;
     return (
       <AppStyles>
         <GlobalStyle />
@@ -85,6 +90,7 @@ export class App extends Component {
         {photos.length > 11 && !isLoading && <Button onClick={this.loadMore} />}
         {isLoading && <Loader />}
         <Toaster />
+        <ModalImage selectImage={selectedImage} resetImage={this.resetImage} />
       </AppStyles>
     );
   }
